@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - TEC Lab</title>
+    <style>
+        :root {
+            --primary-color: #0891b2;
+            --primary-hover: #0e7490;
+            --secondary-color: #f97316;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            color: var(--text-primary);
+            background: var(--background);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--background);
+            border-bottom: 2px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .research-area {
+            margin-bottom: 4rem;
+        }
+
+        .area-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .area-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-highlights {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .project-highlights h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .project-highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-highlights li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .project-highlights li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .meta-badge {
+            background: #e0f2fe;
+            color: #075985;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .area-title {
+                font-size: 1.5rem;
+            }
+            
+            .project-title {
+                font-size: 1.25rem;
+            }
+            
+            .nav-links {
+                gap: 0.75rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TEC Lab</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Research Projects</h1>
+        <p>Advancing thermal-fluid engineering through computational and experimental approaches</p>
+    </section>
+
+    <div class="container">
+        <!-- Research Area 1: Combustion -->
+        <div class="research-area">
+            <h2 class="area-title">Chemical Kinetics & Combustion</h2>
+            <p class="area-subtitle">Developing reduced kinetic mechanisms for fuel combustion and pollutant formation</p>
+
+            <!-- Project 1.1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="combustion-soot-process.jpg" alt="Soot Formation Process" onerror="this.parentElement.innerHTML='Image: Soot Formation Process Diagram<br><small>Upload combustion-soot-process.jpg</small>'">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Compact n-Dodecane Kinetic Mechanism for Soot Prediction</h3>
+                    <p class="project-description">
+                        Development of a compact n-dodecane kinetic mechanism using path flux analysis and artificial neural networks (ANN) to predict soot formation in diesel and jet fuel surrogates. The mechanism serves as a computational tool for understanding pollutant formation in non-premixed flames.
+                    </p>
+                    
+                    <div class="project-highlights">
+                        <h4>Key Achievements</h4>
+                        <ul>
+                            <li>Developed 155-species, 827-reaction mechanism with PAH sub-models</li>
+                            <li>Achieved 5.5× computational speedup compared to detailed mechanisms</li>
+                            <li>Extended prediction capability from 5 to 16 species including aromatics</li>
+                            <li>Validated against experimental data for ignition delay and flame speed</li>
+                            <li>Successfully coupled with CFD for spatial distribution analysis</li>
+                        </ul>
+                    </div>
+
+                    <p class="project-description">
+                        This research employs hybrid reduction methods combining traditional sensitivity analysis with machine learning techniques to create efficient yet accurate kinetic models for practical combustion applications.
+                    </p>
+
+                    <div class="project-meta">
+                        <span class="meta-badge">CFD Modeling</span>
+                        <span class="meta-badge">Machine Learning</span>
+                        <span class="meta-badge">Kinetic Mechanism</span>
+                        <a href="publications.html" class="project-link">View Related Publications →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 1.2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="combustion-results.jpg" alt="CFD Results" onerror="this.parentElement.innerHTML='Image: Spatial Distribution of Species<br><small>Upload combustion-results.jpg</small>'">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">CFD Investigation of PAH and Soot Formation in Diffusion Flames</h3>
+                    <p class="project-description">
+                        Computational fluid dynamics study examining polycyclic aromatic hydrocarbon (PAH) formation and soot volume fraction in methane-dodecane blended non-premixed flames, revealing detailed reaction pathways and spatial distributions of aromatics.
+                    </p>
+                    
+                    <div class="project-highlights">
+                        <h4>Research Highlights</h4>
+                        <ul>
+                            <li>Investigated spatial distributions of single-ring to four-ring aromatics</li>
+                            <li>Performed rate of production (ROP) analysis for aromatic formation pathways</li>
+                            <li>Accurate prediction of soot volume fractions in co-flow diffusion flames</li>
+                            <li>Analyzed effects of fuel blending on pollutant emissions</li>
+                            <li>Validated CFD predictions against experimental measurements</li>
+                        </ul>
+                    </div>
+
+                    <p class="project-description">
+                        The study provides insights into fuel-to-pollutant conversion processes, essential for designing cleaner combustion systems in automotive and aerospace applications.
+                    </p>
+
+                    <div class="project-meta">
+                        <span class="meta-badge">PAH Formation</span>
+                        <span class="meta-badge">Soot Modeling</span>
+                        <span class="meta-badge">ANSYS Fluent</span>
+                        <a href="publications.html" class="project-link">View Related Publications →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Area 2: Thermal Management -->
+        <div class="research-area">
+            <h2 class="area-title">Thermal Management Systems</h2>
+            <p class="area-subtitle">Optimizing heat transfer performance through advanced manifold and microchannel designs</p>
+
+            <!-- Project 2.1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="microchannel-assembly.jpg" alt="Microchannel Heat Sink" onerror="this.parentElement.innerHTML='Image: Microchannel Heat Sink Assembly<br><small>Upload microchannel-assembly.jpg</small>'">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">CFD Analysis of Microchannel Heat Sink with Different Manifold Arrangements</h3>
+                    <p class="project-description">
+                        Computational investigation of heat transfer characteristics in microchannel heat sinks (MCHS) with three different manifold configurations: Rectangular (R), Rectangle with Semi-Circular (RSC), and Divergent-Convergent (DC) designs.
+                    </p>
+                    
+                    <div class="project-highlights">
+                        <h4>Key Findings</h4>
+                        <ul>
+                            <li>Divergent-Convergent manifold showed 9-10% higher heat transfer coefficient</li>
+                            <li>Tested across Reynolds number range of 342-857 with water as working fluid</li>
+                            <li>Analyzed performance at multiple power inputs (50W, 75W, 100W, 125W)</li>
+                            <li>DC design achieved superior Nusselt number compared to R and RSC types</li>
+                            <li>Optimized channel dimensions: 500μm width, 3000μm depth, 24.5mm length</li>
+                        </ul>
+                    </div>
+
+                    <p class="project-description">
+                        This research addresses the critical need for efficient cooling in high-power electronics, providing design guidelines for next-generation microchannel heat exchangers.
+                    </p>
+
+                    <div class="project-meta">
+                        <span class="meta-badge">Heat Transfer</span>
+                        <span class="meta-badge">Microchannels</span>
+                        <span class="meta-badge">CFD Analysis</span>
+                        <a href="publications.html" class="project-link">View Related Publications →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2.2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="heat-transfer-results.jpg" alt="Heat Transfer Results" onerror="this.parentElement.innerHTML='Image: Heat Transfer Coefficient vs Reynolds Number<br><small>Upload heat-transfer-results.jpg</small>'">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Manifold Design Optimization for Enhanced
+Cooling Performance</h3>
+                    <p class="project-description">
+                        Experimental and computational study investigating the relationship between manifold geometry, flow distribution, and thermal performance in microchannel heat sinks. Focus on optimizing inlet/outlet configurations for uniform flow distribution and maximum heat dissipation.
+                    </p>
+                    
+                    <div class="project-highlights">
+                        <h4>Research Contributions</h4>
+                        <ul>
+                            <li>Demonstrated 10% improvement in heat transfer with optimized manifold design</li>
+                            <li>Reduced pressure drop while maintaining high Nusselt numbers</li>
+                            <li>Investigated effects of channel aspect ratio on thermal performance</li>
+                            <li>Developed design correlations for manifold optimization</li>
+                            <li>Applicable to electronics cooling, automotive, and aerospace systems</li>
+                        </ul>
+                    </div>
+
+                    <p class="project-description">
+                        Results provide practical guidelines for designing high-performance microchannel heat exchangers with improved flow uniformity and reduced manufacturing complexity.
+                    </p>
+
+                    <div class="project-meta">
+                        <span class="meta-badge">Flow Distribution</span>
+                        <span class="meta-badge">Manifold Design</span>
+                        <span class="meta-badge">Experimental Study</span>
+                        <a href="publications.html" class="project-link">View Related Publications →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div style="background:linear-gradient(135deg,#0891b2 0%,#06b6d4 100%);color:white;padding:3rem 2rem;border-radius:12px;text-align:center;margin-top:4rem">
+            <h2 style="font-size:2rem;margin-bottom:1rem">Interested in Collaborating?</h2>
+            <p style="font-size:1.1rem;margin-bottom:2rem;opacity:0.95">We welcome collaborations with industry partners and academic institutions</p>
+            <a href="index.html#contact" style="display:inline-block;padding:0.875rem 2rem;border-radius:8px;background:white;color:#0891b2;text-decoration:none;font-weight:600;transition:all 0.3s">Contact Us</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Thermal Engineering and Computed Lab, National Chung Cheng University. All rights reserved.</p>
+            <p style="margin-top:1rem;font-size:0.9rem"><a href="index.html" style="color:rgba(255,255,255,0.8);text-decoration:none">← Back to Home</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+
