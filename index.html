@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Engineering and Computed Lab</title>
+    <style>
+        :root {
+            --primary-color: #0891b2;
+            --primary-hover: #0e7490;
+            --secondary-color: #f97316;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            color: var(--text-primary);
+            background: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--background);
+            border-bottom: 2px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Research Areas */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .research-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .research-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .research-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .research-card h3 {
+            font-size: 1.375rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .research-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* News Section */
+        .news-section {
+            background: var(--surface);
+            padding: 4rem 2rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .news-date {
+            color: var(--primary-color);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-card h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.125rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TEC Lab</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Thermal Engineering and Computed Lab</h1>
+        <p>Advancing Engineering Through Computational Simulation</p>
+        <div class="hero-buttons">
+            <a href="#research" class="btn btn-primary">Explore Research</a>
+            <a href="#contact" class="btn btn-secondary">Join Our Lab</a>
+        </div>
+    </section>
+
+    <!-- Research Areas -->
+    <div class="container" id="research">
+        <h2 class="section-title">Research Focus Areas</h2>
+        <p class="section-subtitle">Computational and experimental solutions for thermal-fluid problems</p>
+        
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="research-icon">🔥</div>
+                <h3>Chemical Kinetics & Combustion</h3>
+                <p>Advanced computational modeling of fuel combustion processes and chemical reaction mechanisms for energy applications.</p>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-icon">❄️</div>
+                <h3>Thermal Management</h3>
+                <p>Cooling system design and optimization for electronics, automotive, and industrial equipment.</p>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-icon">🌊</div>
+                <h3>Complex Fluids</h3>
+                <p>Multiphase flow analysis, non-Newtonian fluids, and advanced fluid dynamics simulations.</p>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-icon">🤖</div>
+                <h3>AI/ML in CFD</h3>
+                <p>Machine learning-accelerated simulations and data-driven turbulence modeling for faster computations.</p>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-icon">⚡</div>
+                <h3>Battery Thermal Systems</h3>
+                <p>Thermal analysis and cooling strategies for battery systems in electric vehicles and energy storage.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            <p class="section-subtitle">Recent achievements and updates from our lab</p>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">February 2026</div>
+                    <h4>New Paper Published</h4>
+                    <p>Our research on ML-accelerated CFD simulations accepted in Journal of Computational Physics.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-date">January 2026</div>
+                    <h4>Student Achievement</h4>
+                    <p>Congratulations to our MS student for winning Best Poster Award at the International CFD Conference.</p>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-date">December 2025</div>
+                    <h4>New Collaboration</h4>
+                    <p>Started research partnership with a leading automotive company on battery thermal management systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <div class="container">
+        <h2 class="section-title">About Our Lab</h2>
+        <p class="section-subtitle">Training the next generation of CAE/CFD engineers</p>
+        
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                The Thermal Engineering and Computed (TEC) Lab uses computational and experimental tools to study thermal-fluid problems, with emphasis on chemical kinetics, cooling systems, complex fluids, and advanced energy applications. Our lab trains MS students to become highly competent CAE/CFD engineers ready for careers in automotive, aerospace, electronics, and energy industries.
+            </p>
+            <p style="font-size: 1.125rem; color: var(--text-secondary);">
+                We offer a structured 2-year MS program with hands-on experience in industry-standard CFD software (ANSYS, COMSOL, OpenFOAM) and emerging technologies including AI/ML integration for accelerated simulations.
+            </p>
+        </div>
+    </div>
+
+    <!-- PI Section -->
+    <div class="container" id="team">
+        <h2 class="section-title">Principal Investigator</h2>
+        <p class="section-subtitle">Leading the Thermal Engineering and Computed Lab</p>
+
+        <div style="max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center;">
+            <div style="flex: 1 1 260px;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">
+                    Dr. Anurag Dahiya
+                </h3>
+                <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                    Assistant Professor, Department of Mechanical Engineering<br>
+                    National Chung Cheng University
+                </p>
+                <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                    Dr. Anurag Dahiya’s research focuses on the chemical kinetics of fuel combustion and the thermal–fluid design of heat exchangers. His work combines detailed reaction mechanisms with high-fidelity simulations to improve the efficiency, performance, and safety of modern energy and thermal systems.
+                </p>
+                <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                    The <strong>Thermal Engineering and Computed Lab</strong> investigates fundamental and applied thermal engineering problems that are closely connected to real-world applications in power generation, transportation, and advanced energy technologies. The group emphasizes rigorous modeling, careful validation, and the development of practical design guidelines that can be transferred to industry.
+                </p>
+                <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                    Dr. Dahiya received his Ph.D. from the Department of Engineering and System Science at National Tsing Hua University, where he specialized in thermal–fluid sciences and computational analysis of combustion and heat transfer systems. At National Chung Cheng University, he is committed to training students to become independent researchers and competent CAE/CFD engineers with strong foundations in both theory and simulation.
+                </p>
+                <p style="font-size: 1rem; color: var(--text-secondary);">
+                    Email: <a href="mailto:anurag@ccu.edu.tw" style="color: var(--primary-color); text-decoration: none;">anurag@ccu.edu.tw</a><br>
+                    Office: 432, College of Engineering II, Sec. 1, University Road, Minxiong Township, Chiayi County 621301<br>
+                    Google Scholar: <a href="https://scholar.google.com/citations?hl=en&user=JCFPK8YAAAAJ&view_op=list_works&sortby=pubdate" style="color: var(--primary-color); text-decoration: none;">Anurag Dahiya – Google Scholar</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>Department of Mechanical Engineering</li>
+                        <li>National Chung Cheng University</li>
+                        <li>Email: anurag@ccu.edu.tw</li>
+                        <li>Office: 432, College of Engineering II, Sec. 1, University Road, Minxiong Township, Chiayi County 621301</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#research">Research Projects</a></li>
+                        <li><a href="#team">Meet Our Team</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                        <li><a href="#contact">Join Our Lab</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">CAE/CFD Job Boards</a></li>
+                        <li><a href="#">Software &amp; Tools</a></li>
+                        <li><a href="#">Department Website</a></li>
+                        <li><a href="#">University Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Thermal Engineering and Computed Lab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
