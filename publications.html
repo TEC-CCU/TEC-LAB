@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - TEC Lab</title>
+    <style>
+        :root {
+            --primary-color: #0891b2;
+            --primary-hover: #0e7490;
+            --secondary-color: #f97316;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            color: var(--text-primary);
+            background: var(--background);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--background);
+            border-bottom: 2px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .publication-item {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .publication-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateX(4px);
+        }
+
+        .pub-number {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .pub-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .pub-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 0.75rem;
+        }
+
+        .pub-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .pub-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        .citation-badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .year-badge {
+            background: #e0f2fe;
+            color: #075985;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 0.75rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TEC Lab</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Publications</h1>
+        <p>Research contributions from the Thermal Engineering and Computed Lab</p>
+    </section>
+
+    <div class="container">
+        <!-- Journal Publications -->
+        <h2 class="section-title">Journal Publications</h2>
+        <p class="section-subtitle">Peer-reviewed articles in international journals</p>
+
+        <div class="publication-item">
+            <div class="pub-number">J1</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, Zi-Jia Wang, Kuang C. Lin</div>
+            <div class="pub-title">C-N-H chemistry, PAH growth and soot formation in non-premixed flames of ammonia/ethylene/hydrogen: A CFD study</div>
+            <div class="pub-venue">Fuel, 2026 (Accepted)</div>
+            <div class="pub-meta">
+                <span class="year-badge">2026</span>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">J2</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, Hairong Tao, Kuang C. Lin</div>
+            <div class="pub-title">n-dodecane mechanism with ANN-assisted reduction for CFD modeling to predict formation of light-weight aromatics and soot in diffusion flames: Comparison with experimental data</div>
+            <div class="pub-venue">International Journal of Chemical Kinetics, 2025, Vol. 57, 315-331</div>
+            <div class="pub-meta">
+                <span class="year-badge">2025</span>
+                <span class="citation-badge">📚 1 Citation</span>
+                <a href="https://doi.org/10.1002/kin.21775" class="pub-link" target="_blank">DOI Link →</a>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">J3</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, Hairong Tao, Chih-Chia Lin, Kuang C. Lin</div>
+            <div class="pub-title">Skeletal kinetic mechanism for predicting formation of non-fuel hydrocarbons and soot in ethylene flames - A CFD approach</div>
+            <div class="pub-venue">Fuel Processing Technology, 2023, Vol. 249, 107847</div>
+            <div class="pub-meta">
+                <span class="year-badge">2023</span>
+                <span class="citation-badge">📚 7 Citations</span>
+                <a href="https://doi.org/10.1016/j.fuproc.2023.107847" class="pub-link" target="_blank">DOI Link →</a>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">J4</div>
+            <div class="pub-authors">Kuang C. Lin, <strong>A. Dahiya</strong>, Hairong Tao, Fan-Hsu Kao</div>
+            <div class="pub-title">Combustion mechanism and CFD investigation of methyl isobutanoate as a component of biodiesel surrogate</div>
+            <div class="pub-venue">Energy, 2022, Vol. 249, 123589</div>
+            <div class="pub-meta">
+                <span class="year-badge">2022</span>
+                <span class="citation-badge">📚 7 Citations</span>
+                <a href="https://doi.org/10.1016/j.energy.2022.123589" class="pub-link" target="_blank">DOI Link →</a>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">J5</div>
+            <div class="pub-authors">Tao-Qian Tang, Sheng-Yen Hsu, <strong>A. Dahiya</strong>, Chang Hwei Soh, Kuang C. Lin</div>
+            <div class="pub-title">Numerical modeling of pulsatile blood flow through a mini-oxygenator in artificial lungs</div>
+            <div class="pub-venue">Computer Methods and Programs in Biomedicine, 2021, Vol. 208, 106241</div>
+            <div class="pub-meta">
+                <span class="year-badge">2021</span>
+                <span class="citation-badge">📚 16 Citations</span>
+                <a href="https://doi.org/10.1016/j.cmpb.2021.106241" class="pub-link" target="_blank">DOI Link →</a>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">J6</div>
+            <div class="pub-authors">Hao Lee, <strong>A. Dahiya</strong>, Kuang C. Lin, Xiang Chen, Wei-Cheng Wang</div>
+            <div class="pub-title">Numerical simulation of ignition delay time for petroleum and renewable fuels</div>
+            <div class="pub-venue">Fuel, 2021, Vol. 304, 121345</div>
+            <div class="pub-meta">
+                <span class="year-badge">2021</span>
+                <span class="citation-badge">📚 17 Citations</span>
+                <a href="https://doi.org/10.1016/j.fuel.2021.121345" class="pub-link" target="_blank">DOI Link →</a>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">J7</div>
+            <div class="pub-authors">U Sajjad, M Amer, HM Ali, <strong>A Dahiya</strong>, N Abbas</div>
+            <div class="pub-title">Cost effective cooling of photovoltaic modules to improve efficiency</div>
+            <div class="pub-venue">Case Studies in Thermal Engineering, 2019, Vol. 14, 100420</div>
+            <div class="pub-meta">
+                <span class="year-badge">2019</span>
+                <span class="citation-badge">📚 178 Citations</span>
+                <a href="https://doi.org/10.1016/j.csite.2019.100420" class="pub-link" target="_blank">DOI Link →</a>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">J8</div>
+            <div class="pub-authors">Syed Muhammad Ammar, Naseem Abbas, Saleem Abbas, Hafiz Muhammad Ali, Iftikhar Hussain, Muhammad Mansoor Janjua, Uzair Sajjad, <strong>A. Dahiya</strong></div>
+            <div class="pub-title">Condensing heat transfer coefficients of r134a in smooth and grooved multiport flat tubes of automotive heat exchanger: an experimental investigation</div>
+            <div class="pub-venue">International Journal of Heat and Mass Transfer, 2019, Vol. 134, 366-376</div>
+            <div class="pub-meta">
+                <span class="year-badge">2019</span>
+                <span class="citation-badge">📚 46 Citations</span>
+                <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2019.01.047" class="pub-link" target="_blank">DOI Link →</a>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">J9</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, SS Sehgal, H Singh</div>
+            <div class="pub-title">
+CFD heat transfer analysis of micro-channel heat sink with different inlet outlet flow arrangements</div>
+            <div class="pub-venue">Indian Journal of Science and Technology, 2016, Vol. 9, 436-447</div>
+            <div class="pub-meta">
+                <span class="year-badge">2016</span>
+                <span class="citation-badge">📚 9 Citations</span>
+            </div>
+        </div>
+
+        <!-- Conference Publications -->
+        <h2 class="section-title" style="margin-top:4rem">Conference Publications</h2>
+        <p class="section-subtitle">International and national conference presentations</p>
+
+        <div class="publication-item">
+            <div class="pub-number">C1</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, Ying De Li, K.C. Lin</div>
+            <div class="pub-title">Ignition delay time and flame speed validation of a reduced mechanism of toluene reference fuel with multi-alcohols- a CFD approach</div>
+            <div class="pub-venue">21st International Conference on Flow Dynamics (ICFD 2024), Sendai, Japan, Nov 18-20, 2024</div>
+            <div class="pub-meta">
+                <span class="year-badge">2024</span>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">C2</div>
+            <div class="pub-authors">Wang Z.J., <strong>A. Dahiya</strong>, K.C. Lin</div>
+            <div class="pub-title">Simulation of ethylene/ammonia laminar opposed diffusion flame: two-dimensional and curtain flow effect</div>
+            <div class="pub-venue">20th International Conference on Flow Dynamics (ICFD 2023), Sendai, Japan, Nov 6-8, 2023</div>
+            <div class="pub-meta">
+                <span class="year-badge">2023</span>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">C3</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, C.-C. Lin, K.C. Lin</div>
+            <div class="pub-title">Development and validation of a skeletal mechanism for ethylene in a premixed flame</div>
+            <div class="pub-venue">13th Asian Computational Fluid Dynamics (ACFD 2023), Bengaluru, India, Oct 30 - Nov 2, 2023</div>
+            <div class="pub-meta">
+                <span class="year-badge">2023</span>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">C4</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, K.C. Lin</div>
+            <div class="pub-title">Development and validation of an n-dodecane skeletal mechanism using a hybrid reduction method in a jet stirred reactor</div>
+            <div class="pub-venue">10th International Conference on Fluid Flow, Heat and Mass Transfer (FFHMT 2023), Ottawa, Canada, June 07-09, 2023</div>
+            <div class="pub-meta">
+                <span class="year-badge">2023</span>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">C5</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, Y-D Li, Z.-J. Wang, Y.-J. Wu, K.C. Lin</div>
+            <div class="pub-title">Ignition delay time and flame speed validation of a reduced n-dodecane mechanism using a hybrid reduction method</div>
+            <div class="pub-venue">14th Asian-Pacific Conference on Combustion (ASPACC 2023), Kaohsiung, Taiwan, May 14-18, 2023</div>
+            <div class="pub-meta">
+                <span class="year-badge">2023</span>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">C6</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, Chi-Chia Lin, Kuang C. Lin</div>
+            <div class="pub-title">Development of the skeletal mechanism of ethylene for ignition delay and laminar flame speed</div>
+            <div class="pub-venue">45th National Conference on Mechanism, Taiwan ROC, 2021</div>
+            <div class="pub-meta">
+                <span class="year-badge">2021</span>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="pub-number">C7</div>
+            <div class="pub-authors"><strong>A. Dahiya</strong>, S.S Sehgal, H Singh</div>
+            <div class="pub-title">Experimental study of heat transfer analysis of micro channel heat sink through different manifold arrangements</div>
+            <div class="pub-venue">2nd ASTFE International Conference, Las Vegas, Nevada, USA, 2017</div>
+            <div class="pub-meta">
+                <span class="year-badge">2017</span>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Thermal Engineering and Computed Lab, National Chung Cheng University. All rights reserved.</p>
+            <p style="margin-top:1rem;font-size:0.9rem"><a href="index.html" style="color:rgba(255,255,255,0.8);text-decoration:none">← Back to Home</a></p>
+        </div>
+    </footer>
+</body>
+</html>
