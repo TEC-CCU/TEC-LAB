@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - TEC Lab</title>
+    <style>
+        :root {
+            --primary-color: #0891b2;
+            --primary-hover: #0e7490;
+            --secondary-color: #f97316;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            color: var(--text-primary);
+            background: var(--background);
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--background);
+            border-bottom: 2px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .pi-section {
+            background: var(--surface);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border: 2px solid var(--border);
+        }
+
+        .pi-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pi-photo-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            border: 4px solid var(--primary-color);
+        }
+
+        .pi-bio {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .coming-soon-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--surface);
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .coming-soon-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .coming-soon-title {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .recruitment-box {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .recruitment-box h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .recruitment-box p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .recruitment-box ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .recruitment-box ul li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .recruitment-box ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .coming-soon-icon {
+                font-size: 3.5rem;
+            }
+            
+            .coming-soon-title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 0.75rem;
+                font-size: 0.85rem;
+            }
+            
+            .pi-photo-placeholder {
+                width: 150px;
+                height: 150px;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TEC Lab</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Our Team</h1>
+        <p>Meet the people behind the Thermal Engineering and Computed Lab</p>
+    </section>
+
+    <div class="container">
+        <!-- PI Section -->
+        <div class="pi-section">
+            <h2 style="text-align:center;font-size:2rem;margin-bottom:2rem;color:var(--text-primary)">Principal Investigator</h2>
+            <div class="pi-container">
+                <div class="pi-photo-placeholder">AD</div>
+                <div class="pi-bio">
+                    <h3 style="font-size:1.5rem;margin-bottom:0.5rem;color:var(--text-primary)">Dr. Anurag Dahiya</h3>
+                    <p style="font-size:1rem;color:var(--text-secondary);margin-bottom:0.5rem">
+                        Assistant Professor<br>
+                        Department of Mechanical Engineering<br>
+                        National Chung Cheng University
+                    </p>
+                    <p style="font-size:1rem;color:var(--text-secondary);margin-top:1rem;line-height:1.6">
+                        Dr. Dahiya's research focuses on chemical kinetics of fuel combustion and thermal-fluid design of heat exchangers using advanced CFD techniques. His work combines detailed reaction mechanisms with high-fidelity simulations to improve energy system efficiency and safety.
+                    </p>
+                    <p style="font-size:0.95rem;color:var(--text-secondary);margin-top:1rem">
+                        <strong>Email:</strong> <a href="mailto:anurag@ccu.edu.tw" style="color:var(--primary-color);text-decoration:none">anurag@ccu.edu.tw</a><br>
+                        <strong>Office:</strong> 432, College of Engineering II<br>
+                        <strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?hl=en&user=JCFPK8YAAAAJ" style="color:var(--primary-color);text-decoration:none">View Profile</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coming Soon Section -->
+        <div class="coming-soon-section">
+            <div class="coming-soon-icon">🚀</div>
+            <h2 class="coming-soon-title">Building Our Research Team</h2>
+            <p class="coming-soon-text">
+                The TEC Lab is currently in its early stages of formation. We are actively recruiting talented and motivated MS and PhD students to join our research group and contribute to cutting-edge thermal-fluid engineering research.
+            </p>
+        </div>
+
+        <!-- Recruitment Section -->
+        <div class="recruitment-box">
+            <h3>Join Our Lab!</h3>
+            <p>We are seeking passionate graduate students interested in:</p>
+            <ul>
+                <li>Chemical kinetics and combustion modeling</li>
+                <li>Computational Fluid Dynamics (CFD)</li>
+                <li>Thermal management systems</li>
+                <li>Heat exchanger design and optimization</li>
+                <li>AI/ML applications in thermal engineering</li>
+            </ul>
+            <p style="margin-top:2rem;font-weight:600">What We Offer:</p>
+            <ul>
+                <li>Hands-on experience with industry-standard software (ANSYS, COMSOL, OpenFOAM)</li>
+                <li>Opportunity to publish in high-impact journals</li>
+                <li>Structured 2-year MS or 3-4 year PhD program</li>
+                <li>Strong foundation in both theory and simulation</li>
+                <li>Career preparation for industry and academia</li>
+            </ul>
+            <a href="mailto:anurag@ccu.edu.tw" class="btn" style="margin-top:1.5rem">Contact Dr. Dahiya</a>
+        </div>
+
+        <!-- Future Section Placeholder -->
+        <div style="text-align:center;padding:2rem;color:var(--text-secondary)">
+            <p style="font-size:1rem">
+                <strong>Graduate Students:</strong> Information will be updated as students join the lab<br>
+                <strong>Alumni:</strong> Future section for past lab members
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Thermal Engineering and Computed Lab, National Chung Cheng University. All rights reserved.</p>
+            <p style="margin-top:1rem;font-size:0.9rem"><a href="index.html" style="color:rgba(255,255,255,0.8);text-decoration:none">← Back to Home</a></p>
+        </div>
+    </footer>
+</body>
+</html>
