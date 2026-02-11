@@ -1,6 +1,3 @@
-Here's the **complete and final `index.html`** with all your requested changes:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +29,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
             line-height: 1.6;
         }
 
-        /* Navigation */
         nav {
             background: var(--background);
             border-bottom: 2px solid var(--border);
@@ -75,7 +71,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
             color: var(--primary-color);
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
             color: white;
@@ -134,14 +129,12 @@ Here's the **complete and final `index.html`** with all your requested changes:
             color: var(--primary-color);
         }
 
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
 
-        /* Research Areas */
         .section-title {
             text-align: center;
             font-size: 2.5rem;
@@ -169,6 +162,7 @@ Here's the **complete and final `index.html`** with all your requested changes:
             border-radius: 12px;
             border: 2px solid var(--border);
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .research-card:hover {
@@ -201,7 +195,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
             line-height: 1.6;
         }
 
-        /* News Section */
         .news-section {
             background: var(--surface);
             padding: 4rem 2rem;
@@ -233,7 +226,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
             margin-bottom: 0.5rem;
         }
 
-        /* Footer */
         footer {
             background: var(--text-primary);
             color: white;
@@ -265,6 +257,7 @@ Here's the **complete and final `index.html`** with all your requested changes:
 
         .footer-section ul li {
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .footer-section a {
@@ -283,7 +276,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
             color: rgba(255,255,255,0.7);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -305,7 +297,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo">TEC Lab</div>
@@ -319,7 +310,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <h1>Thermal Engineering and Computed Lab</h1>
         <p>Advancing Engineering Through Computational Simulation</p>
@@ -329,27 +319,29 @@ Here's the **complete and final `index.html`** with all your requested changes:
         </div>
     </section>
 
-    <!-- Research Areas -->
     <div class="container" id="research">
         <h2 class="section-title">Research Focus Areas</h2>
         <p class="section-subtitle">Computational and experimental solutions for thermal-fluid problems</p>
         
         <div class="research-grid">
-            <div class="research-card">
-                <div class="research-icon">🔥</div>
-                <h3>Chemical Kinetics & Combustion</h3>
-                <p>Advanced computational modeling of fuel combustion processes and chemical reaction mechanisms for energy applications.</p>
-            </div>
+            <a href="research.html" style="text-decoration: none; color: inherit;">
+                <div class="research-card">
+                    <div class="research-icon">🔥</div>
+                    <h3>Chemical Kinetics & Combustion</h3>
+                    <p>Advanced computational modeling of fuel combustion processes and chemical reaction mechanisms for energy applications.</p>
+                </div>
+            </a>
             
-            <div class="research-card">
-                <div class="research-icon">❄️</div>
-                <h3>Thermal Management</h3>
-                <p>Cooling system design and optimization for electronics, automotive, and industrial equipment.</p>
-            </div>
+            <a href="research.html" style="text-decoration: none; color: inherit;">
+                <div class="research-card">
+                    <div class="research-icon">❄️</div>
+                    <h3>Thermal Management</h3>
+                    <p>Cooling system design and optimization for electronics, automotive, and industrial equipment.</p>
+                </div>
+            </a>
         </div>
     </div>
 
-    <!-- News Section -->
     <section class="news-section">
         <div class="container">
             <h2 class="section-title">Latest News</h2>
@@ -365,7 +357,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
         </div>
     </section>
 
-    <!-- About Section -->
     <div class="container">
         <h2 class="section-title">About Our Lab</h2>
         <p class="section-subtitle">Training the next generation of CAE/CFD engineers</p>
@@ -383,7 +374,6 @@ Here's the **complete and final `index.html`** with all your requested changes:
         </div>
     </div>
 
-    <!-- PI Section -->
     <div class="container" id="team">
         <h2 class="section-title">Principal Investigator</h2>
         <p class="section-subtitle">Leading the Thermal Engineering and Computed Lab</p>
@@ -408,4 +398,4 @@ Here's the **complete and final `index.html`** with all your requested changes:
                 </p>
                 <p style="font-size: 1rem; color: var(--text-secondary);">
                     <strong>Email:</strong> <a href="mailto:anurag@ccu.edu.tw" style="color: var(--primary-color); text-decoration: none;">anurag@ccu.edu.tw</a><br>
-                    <strong>Phone:</strong> (05) 272-0411 ext. 33334
+                    <strong>Phone:</strong> (05
