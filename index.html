@@ -1,3 +1,6 @@
+Here's the **COMPLETE mobile-optimized HTML code**. Copy all of this:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,10 +45,11 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -56,8 +60,9 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -74,18 +79,18 @@
         .hero {
             background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
             color: white;
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 2rem;
             opacity: 0.95;
         }
@@ -132,33 +137,33 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.125rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .research-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .research-card {
             background: var(--surface);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 12px;
             border: 2px solid var(--border);
             transition: all 0.3s;
@@ -185,7 +190,7 @@
         }
 
         .research-card h3 {
-            font-size: 1.375rem;
+            font-size: 1.25rem;
             margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
@@ -193,17 +198,18 @@
         .research-card p {
             color: var(--text-secondary);
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .news-section {
             background: var(--surface);
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
         }
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .news-card {
@@ -226,10 +232,34 @@
             margin-bottom: 0.5rem;
         }
 
+        .pi-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pi-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .pi-bio {
+            flex: 1;
+            min-width: 280px;
+        }
+
         footer {
             background: var(--text-primary);
             color: white;
-            padding: 3rem 2rem 2rem;
+            padding: 2rem 1.5rem;
             text-align: center;
         }
 
@@ -240,7 +270,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
             text-align: left;
@@ -249,6 +279,7 @@
         .footer-section h4 {
             margin-bottom: 1rem;
             color: var(--primary-color);
+            font-size: 1rem;
         }
 
         .footer-section ul {
@@ -257,13 +288,14 @@
 
         .footer-section ul li {
             margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .footer-section a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
             transition: color 0.3s;
+            word-break: break-word;
         }
 
         .footer-section a:hover {
@@ -272,26 +304,91 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
             
             .hero p {
-                font-size: 1.125rem;
+                font-size: 1rem;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
             }
             
             .nav-links {
-                gap: 1rem;
-                font-size: 0.875rem;
+                gap: 0.75rem;
+                font-size: 0.85rem;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 1.75rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .pi-photo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .pi-container {
+                text-align: center;
+            }
+            
+            .pi-bio {
+                text-align: left;
+            }
+            
+            .research-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.75rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .pi-photo {
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
@@ -376,12 +473,13 @@
 
     <div class="container" id="team">
         <h2 class="section-title">Principal Investigator</h2>
-        <p class="section-subtitle">Leading the Thermal Engineering and Computed Lab</p>
+        <p class="section-subtitle">Leading the Thermal Engineering and Computed Lab
+        </p>
 
-        <div style="max-width:900px;margin:0 auto;display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap">
-    <img src="anurag.jpg" alt="Dr. Anurag Dahiya" style="width:200px;height:200px;border-radius:50%;object-fit:cover;border:3px solid var(--primary-color)">
-    <div style="flex:1;min-width:300px">
-        <h3 style="font-size:1.5rem;margin-bottom:0.5rem;color:var(--text-primary)">Dr. Anurag Dahiya</h3>
+        <div class="pi-container">
+            <img src="anurag.jpg" alt="Dr. Anurag Dahiya" class="pi-photo">
+            <div class="pi-bio">
+                <h3 style="font-size:1.5rem;margin-bottom:0.5rem;color:var(--text-primary)">Dr. Anurag Dahiya</h3>
                 <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
                     Assistant Professor, Department of Mechanical Engineering<br>
                     National Chung Cheng University
@@ -396,8 +494,7 @@
                     Dr. Dahiya received his Ph.D. from the Department of Engineering and System Science at National Tsing Hua University, where he specialized in thermal–fluid sciences and computational analysis of combustion and heat transfer systems. At National Chung Cheng University, he is committed to training students to become independent researchers and competent CAE/CFD engineers with strong foundations in both theory and simulation.
                 </p>
                 <p style="font-size: 1rem; color: var(--text-secondary);">
-                    <strong>Email:</strong> <a href="mailto:anurag@ccu.edu.tw" style="color: var(--primary-color); text-decoration: none;">anurag@ccu.edu.tw
-</a><br>
+                    <strong>Email:</strong> <a href="mailto:anurag@ccu.edu.tw" style="color: var(--primary-color); text-decoration: none;">anurag@ccu.edu.tw</a><br>
                     <strong>Phone:</strong> (05) 272-0411 ext. 33334<br>
                     <strong>Office:</strong> 432, College of Engineering II, Sec. 1, University Road, Minxiong Township, Chiayi County 621301<br>
                     <strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?hl=en&user=JCFPK8YAAAAJ&view_op=list_works&sortby=pubdate" style="color: var(--primary-color); text-decoration: none;">Anurag Dahiya – Google Scholar</a>
@@ -436,7 +533,7 @@
                     <h4>CAE/CFD Job Boards - International</h4>
                     <ul>
                         <li><a href="https://www.indeed.com/jobs?q=cfd+engineer&l=">Indeed</a></li>
-                        <li><a href="https://www.linkedin.com/jobs/search?keywords=Computational%20Fluid%20Dynamics%20%28CFD%29&location=&trk=public_jobs_jobs-search-bar_search-submit&redirect=false&position=1&pageNum=0">LinkedIn</a></li>
+                        <li><a href="https://www.linkedin.com/jobs/search?keywords=Computational%20Fluid%20Dynamics%20%28CFD%29">LinkedIn</a></li>
                         <li><a href="https://www.glassdoor.com/Job/cfd-jobs-SRCH_KE0,3.htm">Glassdoor</a></li>
                         <li><a href="https://www.cfd-online.com/Jobs/">CFD-Online</a></li>
                         <li><a href="https://www.google.com/search?q=CFD+jobs+mechanical">Google Jobs</a></li>
@@ -446,10 +543,10 @@
                 <div class="footer-section">
                     <h4>CAE/CFD Job Boards - Taiwan/China</h4>
                     <ul>
-                        <li><a href="https://www.104.com.tw/jobs/search/?ro=0&keyword=%E7%86%B1%E6%B5%81%20CFD&edu=5&order=1&asc=0&page=1&mode=s">104 人力銀行</a></li>
-                        <li><a href="https://www.1111.com.tw/job-bank/job-index.asp?si=1&ss=s&ks=%e7%86%b1%e6%b5%81%20cfd&page=1">1111 人力銀行</a></li>
+                        <li><a href="https://www.104.com.tw/jobs/search/?keyword=%E7%86%B1%E6%B5%81%20CFD">104 人力銀行</a></li>
+                        <li><a href="https://www.1111.com.tw/job-bank/job-index.asp?ks=%e7%86%b1%e6%b5%81%20cfd">1111 人力銀行</a></li>
                         <li><a href="https://www.glassdoor.com/Job/china-cfd-jobs-SRCH_IL.0,5_IN48_KO6,9.htm">Glassdoor China</a></li>
-                        <li><a href="https://www.linkedin.com/jobs/search?keywords=%28CFD%29&location=Taipei%2C%20Taiwan&trk=public_jobs_jobs-search-bar_search-submit&redirect=false&position=1&pageNum=0">LinkedIn Taiwan</a></li>
+                        <li><a href="https://www.linkedin.com/jobs/search?keywords=%28CFD%29&location=Taipei%2C%20Taiwan">LinkedIn Taiwan</a></li>
                         <li><a href="https://tw.indeed.com/jobs?q=+CFD&l=">Indeed Taiwan</a></li>
                         <li><a href="https://www.careerjet.com.tw/cfd-engineer-jobs.html">CareerJet Taiwan</a></li>
                     </ul>
@@ -463,5 +560,3 @@
     </footer>
 </body>
 </html>
-
-
