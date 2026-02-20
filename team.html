@@ -49,11 +49,7 @@
             flex-wrap: wrap;
         }
 
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
+        .logo { font-size: 1.25rem; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 0.3rem; } .logo-img { height: 40px; width: auto; vertical-align: middle; }
 
         .nav-links {
             display: flex;
@@ -421,7 +417,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">TEC Lab</div>
+            <div class="logo"><img src="tec-logo.png" alt="TEC Logo" class="logo-img">TEC Lab</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="research.html">Research</a></li>
