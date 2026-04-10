@@ -1,337 +1,651 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching - TEC Lab</title>
-    <link rel="icon" type="image/png" href="tec-logo.png">
-    <style>
-        :root {
-            --primary-color: #0891b2;
-            --primary-hover: #0e7490;
-            --secondary-color: #f97316;
-            --background: #ffffff;
-            --surface: #f8fafc;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --border: #e2e8f0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            color: var(--text-primary);
-            background: var(--background);
-            line-height: 1.6;
-        }
-
-        nav {
-            background: var(--background);
-            border-bottom: 2px solid var(--border);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-            vertical-align: middle;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
-            color: white;
-            padding: 3rem 1.5rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .section-subtitle {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .course-section {
-            margin-bottom: 4rem;
-        }
-
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .course-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .course-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-
-        .course-badge {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .course-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .course-info {
-            margin: 1rem 0;
-        }
-
-        .course-info p {
-            margin: 0.5rem 0;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .course-info strong {
-            color: var(--text-primary);
-        }
-
-        .topics-list {
-            margin-top: 1.5rem;
-        }
-
-        .topics-list h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-
-        .topics-list ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .topics-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--text-secondary);
-        }
-
-        .topics-list li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .animation-section {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 2rem;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        .animation-section h4 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .coming-soon {
-            background: #fef3c7;
-            border: 2px solid #fbbf24;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .coming-soon h5 {
-            color: #92400e;
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 2rem 1.5rem;
-            text-align: center;
-        }
-
-        .footer-bottom {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .course-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teaching - TEC Lab</title>
+  <meta name="description" content="Applied Mechanics II teaching page with easy interactive mechanics games for particle and rigid body dynamics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-2: #edf3f8;
+      --text: #15202b;
+      --muted: #617181;
+      --line: #d7e0e8;
+      --primary: #0d6e6e;
+      --primary-2: #15588a;
+      --accent: #e07a12;
+      --success: #2f7d32;
+      --danger: #b3261e;
+      --shadow: 0 14px 40px rgba(17, 26, 39, 0.08);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(13,110,110,0.08), transparent 24%),
+        linear-gradient(180deg, #fbfdff 0%, var(--bg) 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img, canvas { display: block; max-width: 100%; }
+    button, input, select { font: inherit; }
+    .container { width: min(calc(100% - 24px), var(--max)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(244,247,251,0.9); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(21,32,43,0.08);
+    }
+    .nav-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      padding: 14px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-height: 44px; }
+    .logo-box {
+      width: 44px; height: 44px; border-radius: 14px; color: var(--primary);
+      background: linear-gradient(135deg, rgba(13,110,110,0.12), rgba(21,88,138,0.18));
+      padding: 8px;
+    }
+    .brand strong { display: block; font-size: 0.95rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .brand span { display: block; font-size: 0.82rem; color: var(--muted); }
+    nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    nav a {
+      min-height: 44px; display: inline-flex; align-items: center; padding: 10px 14px;
+      border-radius: 999px; color: var(--muted);
+    }
+    nav a:hover, nav a[aria-current="page"] { background: rgba(13,110,110,0.1); color: var(--primary); }
+    .hero { padding: 54px 0 26px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; }
+    .card, .course-card, .game-card, .panel, .result-box { background: var(--surface); border: 1px solid rgba(21,32,43,0.08); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hero-card { padding: 32px; background: linear-gradient(180deg, #ffffff 0%, #f6fbfb 100%); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px;
+      background: rgba(13,110,110,0.1); color: var(--primary); font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    h1, h2, h3, h4 { margin: 0; }
+    h1 { font-family: 'Source Serif 4', serif; font-size: clamp(2rem, 4vw, 3.7rem); line-height: 1.02; max-width: 12ch; margin-bottom: 16px; }
+    .hero-card p, .section-head p, .topic p, .game-header p, .result-box p { color: var(--muted); }
+    .hero-actions, .game-actions, .question-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn, .mini-btn {
+      border: none; cursor: pointer; font-weight: 700; min-height: 44px;
+      display: inline-flex; align-items: center; justify-content: center; border-radius: 999px;
+      padding: 0 18px;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-secondary { background: #fff; color: var(--text); border: 1px solid rgba(21,32,43,0.1); }
+    .mini-btn { border-radius: 12px; background: #fff; border: 1px solid rgba(21,32,43,0.1); color: var(--text); }
+    .hero-side { display: grid; gap: 16px; }
+    .info-card { padding: 22px; }
+    .info-card strong { display: block; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 10px; }
+    section { padding: 24px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 18px; flex-wrap: wrap; }
+    .course-card { overflow: hidden; }
+    .course-top {
+      padding: 28px; background: linear-gradient(135deg, rgba(13,110,110,0.08), rgba(21,88,138,0.05));
+      border-bottom: 1px solid rgba(21,32,43,0.08);
+    }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .pill {
+      display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px; border-radius: 999px;
+      background: rgba(255,255,255,0.82); border: 1px solid rgba(21,32,43,0.08); color: var(--muted); font-size: 0.82rem; font-weight: 600;
+    }
+    .topic-grid { padding: 24px 28px 28px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .topic { background: var(--surface-2); border: 1px solid rgba(21,32,43,0.05); border-radius: 14px; padding: 16px; }
+    .topic strong { display: block; margin-bottom: 8px; font-size: 0.95rem; }
+    .game-grid { display: grid; gap: 22px; }
+    .game-card { padding: 22px; }
+    .game-header { display: flex; justify-content: space-between; gap: 14px; align-items: start; flex-wrap: wrap; margin-bottom: 18px; }
+    .game-layout { display: grid; grid-template-columns: 320px 1fr; gap: 18px; align-items: start; }
+    .panel { padding: 16px; background: linear-gradient(180deg, #ffffff 0%, #fafdff 100%); }
+    .control-group { margin-bottom: 14px; }
+    .control-group label { display: flex; justify-content: space-between; gap: 10px; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+    input[type="range"] { width: 100%; accent-color: var(--primary); }
+    canvas { width: 100%; height: auto; background: linear-gradient(180deg, #fdfefe 0%, #edf5fb 100%); border-radius: 16px; border: 1px solid rgba(21,32,43,0.08); }
+    .readout { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 14px; }
+    .readout div { background: var(--surface-2); border-radius: 12px; border: 1px solid rgba(21,32,43,0.06); padding: 12px; }
+    .readout small { display: block; color: var(--muted); margin-bottom: 4px; }
+    .lesson-box {
+      margin-top: 14px; padding: 14px 16px; border-radius: 14px;
+      background: rgba(13,110,110,0.08); color: #15455c; border: 1px solid rgba(13,110,110,0.1);
+      font-size: 0.94rem;
+    }
+    .result-box { margin-top: 16px; padding: 18px; background: linear-gradient(135deg, rgba(224,122,18,0.08), rgba(13,110,110,0.05)); }
+    .result-text { min-height: 24px; font-weight: 700; color: var(--primary-2); margin-top: 10px; }
+    .score-board {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 12px;
+    }
+    .score-board div { background: rgba(255,255,255,0.7); padding: 12px; border-radius: 12px; border: 1px solid rgba(21,32,43,0.06); }
+    .question-box {
+      margin-top: 14px; padding: 14px; border-radius: 14px; background: #fff; border: 1px dashed rgba(21,32,43,0.16);
+    }
+    .question-box strong { display: block; margin-bottom: 10px; }
+    .question-box select { width: 100%; min-height: 42px; border-radius: 10px; border: 1px solid rgba(21,32,43,0.12); padding: 0 10px; background: #fff; }
+    .footer { padding: 28px 0 48px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 980px) {
+      .hero-grid, .game-layout { grid-template-columns: 1fr; }
+      .topic-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 700px) {
+      .topic-grid, .readout, .score-board { grid-template-columns: 1fr; }
+      .hero-card, .game-card, .course-top, .topic-grid { padding-left: 18px; padding-right: 18px; }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="tec-logo.png" alt="TEC Logo" class="logo-img">
-                TEC Lab
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="teaching.html" style="color: var(--primary-color);">Teaching</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="hero">
-        <h1>Teaching</h1>
-        <p>Courses taught by Dr. Anurag Dahiya</p>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="index.html">
+        <span class="logo-box" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 46L26 18H32L20 46H14Z" fill="currentColor"/>
+            <path d="M31 46L43 18H50L38 46H31Z" fill="currentColor" opacity="0.92"/>
+            <path d="M22 33H43" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>
+          <strong>TEC Lab</strong>
+          <span>Teaching and mechanics games</span>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="team.html">Team</a>
+        <a href="publications.html">Publications</a>
+        <a href="teaching.html" aria-current="page">Teaching</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="container">
-        <div class="course-section">
-            <h2 class="section-title">Undergraduate Courses</h2>
-            <p class="section-subtitle">Core mechanical engineering courses for Bachelor's degree students</p>
-            
-            <div class="course-grid">
-                <div class="course-card">
-                    <span class="course-badge">Spring 2026</span>
-                    <h3>Applied Mechanics II (Dynamics)</h3>
-                    
-                    <div class="course-info">
-                        <p><strong>Course Code:</strong> ME202</p>
-                        <p><strong>Credits:</strong> 3</p>
-                        <p><strong>Level:</strong> Undergraduate (2nd Year)</p>
-                        <p><strong>Language:</strong> English</p>
-                    </div>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <article class="card hero-card">
+          <span class="eyebrow">Applied Mechanics II</span>
+          <h1>Easy mechanics games for learning dynamics by play.</h1>
+          <p>This page expands your current teaching page into a more student-friendly learning space with simple interactive games. Students change only a few parameters, get immediate feedback, and answer a short concept question after each activity.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#games">Play the games</a>
+            <a class="btn btn-secondary" href="#undergraduate">View course topics</a>
+          </div>
+        </article>
+        <div class="hero-side">
+          <article class="card info-card">
+            <strong>Easy to use</strong>
+            <p>Each game uses only a few sliders or buttons so students can start learning without reading long instructions.</p>
+          </article>
+          <article class="card info-card">
+            <strong>Built for teaching</strong>
+            <p>Every activity includes a learning goal, a measurable target, and a quick concept check so the page supports lecture use and self-study.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                    <div class="topics-list">
-                        <h4>Topics Covered:</h4>
-                        <ul>
-                            <li>Kinematics of Particles</li>
-                            <li>Kinetics of Particles</li>
-                            <li>Kinematics of Rigid Bodies</li>
-                            <li>Kinetics of Rigid Bodies</li>
-                            <li>Work and Energy of Rigid Bodies</li>
-                            <li>Impulse and Momentum of Rigid Bodies</li>
-                        </ul>
-                    </div>
+    <section id="undergraduate">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Undergraduate</span>
+            <h2>Applied Mechanics II (Dynamics)</h2>
+            <p>Your current teaching page already lists this course and its topic coverage, including particle and rigid body dynamics, so this upgraded version keeps that structure and adds interactive learning directly below it.</p>
+          </div>
+        </div>
+        <article class="course-card">
+          <div class="course-top">
+            <h3>Course information</h3>
+            <div class="meta">
+              <span class="pill">Course Code: ME202</span>
+              <span class="pill">Credits: 3</span>
+              <span class="pill">Level: Undergraduate (2nd Year)</span>
+              <span class="pill">Language: English</span>
+              <span class="pill">Spring 2026</span>
+            </div>
+          </div>
+          <div class="topic-grid">
+            <div class="topic"><strong>Kinematics of Particles</strong><p>Position, velocity, acceleration, and projectile motion.</p></div>
+            <div class="topic"><strong>Kinetics of Particles</strong><p>Force, mass, acceleration, and friction effects.</p></div>
+            <div class="topic"><strong>Kinematics of Rigid Bodies</strong><p>Angular motion, rotation, and point velocity on a body.</p></div>
+            <div class="topic"><strong>Kinetics of Rigid Bodies</strong><p>Torque, inertia, and angular acceleration.</p></div>
+            <div class="topic"><strong>Work and Energy of Rigid Bodies</strong><p>Energy input, storage, and rotational kinetic energy.</p></div>
+            <div class="topic"><strong>Impulse and Momentum of Rigid Bodies</strong><p>Impact effects, angular momentum change, and impulse response.</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-                    <div class="animation-section">
-                        <h4>🎬 Interactive Animations</h4>
-                        <p>Visual demonstrations and simulations for dynamics concepts</p>
-                        <div class="coming-soon">
-                            <h5>🚧 Under Development</h5>
-                            <p>Interactive animations for rigid body kinematics, kinetics, work-energy, and impulse-momentum will be available soon!</p>
-                        </div>
-                    </div>
+    <section id="games">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Interactive games</span>
+            <h2>Play, predict, and learn</h2>
+            <p>Your current live teaching page still shows the animation section as under development, so these game modules are designed to replace that placeholder with activities students can immediately use and understand. Each game is short, visual, and concept-focused.</p>
+          </div>
+        </div>
+
+        <div class="game-grid">
+          <article class="game-card">
+            <div class="game-header">
+              <div>
+                <h3>Game 1: Hit the target</h3>
+                <p>A particle is launched toward a target. Students only adjust speed and angle, then learn how projectile range depends on initial conditions.</p>
+              </div>
+            </div>
+            <div class="game-layout">
+              <div class="panel">
+                <div class="control-group">
+                  <label for="g1Speed"><span>Speed</span><span id="g1SpeedVal">20 m/s</span></label>
+                  <input id="g1Speed" type="range" min="8" max="35" step="1" value="20">
                 </div>
+                <div class="control-group">
+                  <label for="g1Angle"><span>Angle</span><span id="g1AngleVal">45°</span></label>
+                  <input id="g1Angle" type="range" min="10" max="80" step="1" value="45">
+                </div>
+                <div class="game-actions">
+                  <button class="mini-btn" id="g1Launch">Launch</button>
+                  <button class="mini-btn" id="g1New">New target</button>
+                </div>
+                <div class="readout">
+                  <div><small>Range</small><strong id="g1Range">0.00 m</strong></div>
+                  <div><small>Flight time</small><strong id="g1Time">0.00 s</strong></div>
+                  <div><small>Peak height</small><strong id="g1Height">0.00 m</strong></div>
+                  <div><small>Score</small><strong id="g1Score">0</strong></div>
+                </div>
+                <div class="lesson-box">Learning focus: compare how changing angle and speed affects range. Try 30°, 45°, and 60° at the same speed.</div>
+                <div class="question-box">
+                  <strong>Quick concept check</strong>
+                  <select id="g1Question">
+                    <option value="">Choose an answer</option>
+                    <option value="correct">For the same speed, angles near 45° usually give the largest range</option>
+                    <option value="wrong1">Mass always changes projectile path strongly</option>
+                    <option value="wrong2">A lower speed always gives a larger range</option>
+                  </select>
+                  <div class="question-actions" style="margin-top:10px;">
+                    <button class="mini-btn" id="g1CheckQ">Check answer</button>
+                  </div>
+                  <div class="result-text" id="g1QResult"></div>
+                </div>
+              </div>
+              <div>
+                <canvas id="game1Canvas" width="760" height="360"></canvas>
+                <div class="result-box">
+                  <h4>Game result</h4>
+                  <p>Hit the orange flag as closely as possible.</p>
+                  <div class="result-text" id="g1Result"></div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
+          </article>
 
-    <footer>
-        <div class="footer-bottom">
-            © 2026 Thermal Engineering and Computing Lab, National Chung Cheng University. All rights reserved.
+          <article class="game-card">
+            <div class="game-header">
+              <div>
+                <h3>Game 2: Torque tuner</h3>
+                <p>Students tune torque and time to make a rotating disk reach a target angular speed. This makes angular acceleration and work-energy ideas easier to see.</p>
+              </div>
+            </div>
+            <div class="game-layout">
+              <div class="panel">
+                <div class="control-group">
+                  <label for="g2Torque"><span>Torque</span><span id="g2TorqueVal">10 N·m</span></label>
+                  <input id="g2Torque" type="range" min="2" max="24" step="1" value="10">
+                </div>
+                <div class="control-group">
+                  <label for="g2Time"><span>Push time</span><span id="g2TimeVal">3.0 s</span></label>
+                  <input id="g2Time" type="range" min="1" max="7" step="0.1" value="3">
+                </div>
+                <div class="game-actions">
+                  <button class="mini-btn" id="g2Spin">Spin disk</button>
+                  <button class="mini-btn" id="g2New">New target</button>
+                </div>
+                <div class="readout">
+                  <div><small>Target ω</small><strong id="g2Target">0.00 rad/s</strong></div>
+                  <div><small>Final ω</small><strong id="g2Final">0.00 rad/s</strong></div>
+                  <div><small>Angular accel.</small><strong id="g2Alpha">0.00 rad/s²</strong></div>
+                  <div><small>Energy</small><strong id="g2Energy">0.00 J</strong></div>
+                </div>
+                <div class="lesson-box">Learning focus: for a fixed disk, a larger torque gives a larger angular acceleration. A longer push time also increases final angular speed.</div>
+                <div class="question-box">
+                  <strong>Quick concept check</strong>
+                  <select id="g2Question">
+                    <option value="">Choose an answer</option>
+                    <option value="correct">If torque increases for the same disk, angular acceleration increases</option>
+                    <option value="wrong1">Moment of inertia becomes zero when torque increases</option>
+                    <option value="wrong2">Angular speed does not depend on time</option>
+                  </select>
+                  <div class="question-actions" style="margin-top:10px;">
+                    <button class="mini-btn" id="g2CheckQ">Check answer</button>
+                  </div>
+                  <div class="result-text" id="g2QResult"></div>
+                </div>
+              </div>
+              <div>
+                <canvas id="game2Canvas" width="760" height="360"></canvas>
+                <div class="result-box">
+                  <h4>Game result</h4>
+                  <p>Match the target angular speed on the gauge as closely as possible.</p>
+                  <div class="result-text" id="g2Result"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-header">
+              <div>
+                <h3>Game 3: Energy ramp race</h3>
+                <p>A rolling rigid body moves down a ramp. Students change the height and body radius, then predict whether the final speed becomes larger or smaller.</p>
+              </div>
+            </div>
+            <div class="game-layout">
+              <div class="panel">
+                <div class="control-group">
+                  <label for="g3Height"><span>Ramp height</span><span id="g3HeightVal">2.0 m</span></label>
+                  <input id="g3Height" type="range" min="0.5" max="4" step="0.1" value="2">
+                </div>
+                <div class="control-group">
+                  <label for="g3Radius"><span>Wheel radius</span><span id="g3RadiusVal">0.40 m</span></label>
+                  <input id="g3Radius" type="range" min="0.2" max="0.8" step="0.01" value="0.4">
+                </div>
+                <div class="game-actions">
+                  <button class="mini-btn" id="g3Roll">Release body</button>
+                  <button class="mini-btn" id="g3Reset">Reset</button>
+                </div>
+                <div class="readout">
+                  <div><small>Potential energy</small><strong id="g3PE">0.00 J</strong></div>
+                  <div><small>Final speed</small><strong id="g3Speed">0.00 m/s</strong></div>
+                  <div><small>Angular speed</small><strong id="g3Omega">0.00 rad/s</strong></div>
+                  <div><small>Score</small><strong id="g3Score">0</strong></div>
+                </div>
+                <div class="lesson-box">Learning focus: greater height means more initial potential energy, so the body reaches a larger speed at the bottom.</div>
+                <div class="question-box">
+                  <strong>Predict before checking</strong>
+                  <select id="g3Question">
+                    <option value="">Choose an answer</option>
+                    <option value="correct">Increasing ramp height increases final speed</option>
+                    <option value="wrong1">Ramp height has no effect on speed</option>
+                    <option value="wrong2">A body at a higher point always has lower energy</option>
+                  </select>
+                  <div class="question-actions" style="margin-top:10px;">
+                    <button class="mini-btn" id="g3CheckQ">Check answer</button>
+                  </div>
+                  <div class="result-text" id="g3QResult"></div>
+                </div>
+              </div>
+              <div>
+                <canvas id="game3Canvas" width="760" height="360"></canvas>
+                <div class="result-box">
+                  <h4>Game result</h4>
+                  <p>Try to make the body cross the finish line with the highest speed.</p>
+                  <div class="result-text" id="g3Result"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-header">
+              <div>
+                <h3>Game 4: Impulse strike</h3>
+                <p>A short force pulse acts on a rigid body. Students control impact force and duration, then try to reach a target angular momentum change.</p>
+              </div>
+            </div>
+            <div class="game-layout">
+              <div class="panel">
+                <div class="control-group">
+                  <label for="g4Force"><span>Impact force</span><span id="g4ForceVal">30 N</span></label>
+                  <input id="g4Force" type="range" min="5" max="80" step="1" value="30">
+                </div>
+                <div class="control-group">
+                  <label for="g4Duration"><span>Impact duration</span><span id="g4DurationVal">0.40 s</span></label>
+                  <input id="g4Duration" type="range" min="0.1" max="1.0" step="0.01" value="0.4">
+                </div>
+                <div class="game-actions">
+                  <button class="mini-btn" id="g4Strike">Apply impulse</button>
+                  <button class="mini-btn" id="g4New">New target</button>
+                </div>
+                <div class="readout">
+                  <div><small>Target ΔL</small><strong id="g4Target">0.00 N·m·s</strong></div>
+                  <div><small>Actual ΔL</small><strong id="g4Actual">0.00 N·m·s</strong></div>
+                  <div><small>Impulse</small><strong id="g4Impulse">0.00 N·s</strong></div>
+                  <div><small>Score</small><strong id="g4Score">0</strong></div>
+                </div>
+                <div class="lesson-box">Learning focus: impulse depends on both force magnitude and duration. A short large force can sometimes equal a small force applied for longer.</div>
+                <div class="question-box">
+                  <strong>Quick concept check</strong>
+                  <select id="g4Question">
+                    <option value="">Choose an answer</option>
+                    <option value="correct">Impulse increases when either force or duration increases</option>
+                    <option value="wrong1">Impulse depends only on mass</option>
+                    <option value="wrong2">Duration has no role in momentum change</option>
+                  </select>
+                  <div class="question-actions" style="margin-top:10px;">
+                    <button class="mini-btn" id="g4CheckQ">Check answer</button>
+                  </div>
+                  <div class="result-text" id="g4QResult"></div>
+                </div>
+              </div>
+              <div>
+                <canvas id="game4Canvas" width="760" height="360"></canvas>
+                <div class="result-box">
+                  <h4>Game result</h4>
+                  <p>Match the target angular momentum change as closely as possible.</p>
+                  <div class="result-text" id="g4Result"></div>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">© 2026 Thermal Engineering and Computing Lab, National Chung Cheng University. Teaching page with interactive mechanics games.</div>
     </footer>
+  </main>
+
+  <script>
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+    function setQuestion(buttonId, selectId, resultId) {
+      document.getElementById(buttonId).addEventListener('click', () => {
+        const val = document.getElementById(selectId).value;
+        const out = document.getElementById(resultId);
+        if (!val) out.textContent = 'Please choose an answer first.';
+        else if (val === 'correct') out.textContent = 'Correct. Good conceptual understanding.';
+        else out.textContent = 'Not correct. Try the activity again and observe the response carefully.';
+      });
+    }
+
+    const g1 = {
+      c: document.getElementById('game1Canvas'), ctx: document.getElementById('game1Canvas').getContext('2d'),
+      speed: document.getElementById('g1Speed'), angle: document.getElementById('g1Angle'),
+      t: 0, running: false, target: 42, score: 0, landedX: 0
+    };
+    function g1Params() {
+      const v = +g1.speed.value, ang = +g1.angle.value * Math.PI / 180, g = 9.81;
+      const vx = v * Math.cos(ang), vy = v * Math.sin(ang), tof = 2 * vy / g, range = vx * tof, h = vy * vy / (2 * g);
+      return { v, ang, vx, vy, tof, range, h, g };
+    }
+    function g1Update() {
+      const p = g1Params();
+      document.getElementById('g1SpeedVal').textContent = `${p.v.toFixed(0)} m/s`;
+      document.getElementById('g1AngleVal').textContent = `${(+g1.angle.value).toFixed(0)}°`;
+      document.getElementById('g1Range').textContent = `${p.range.toFixed(2)} m`;
+      document.getElementById('g1Time').textContent = `${p.tof.toFixed(2)} s`;
+      document.getElementById('g1Height').textContent = `${p.h.toFixed(2)} m`;
+      document.getElementById('g1Score').textContent = g1.score;
+    }
+    function g1NewTarget() {
+      g1.target = 18 + Math.random() * 38;
+      document.getElementById('g1Result').textContent = 'New target set. Adjust speed and angle, then launch.';
+    }
+    function g1Launch() { g1.t = 0; g1.running = true; document.getElementById('g1Result').textContent = ''; }
+    function g1Draw(dt) {
+      const ctx = g1.ctx, { width, height } = g1.c, p = g1Params();
+      if (g1.running) g1.t += dt;
+      const t = Math.min(g1.t, p.tof), x = p.vx * t, y = p.vy * t - 0.5 * p.g * t * t;
+      if (g1.t >= p.tof && g1.running) {
+        g1.running = false; g1.landedX = p.range;
+        const err = Math.abs(g1.landedX - g1.target);
+        if (err < 1) { g1.score += 10; document.getElementById('g1Result').textContent = `Excellent hit. Error = ${err.toFixed(2)} m.`; }
+        else if (err < 3) { g1.score += 6; document.getElementById('g1Result').textContent = `Good try. Error = ${err.toFixed(2)} m.`; }
+        else { g1.score += 2; document.getElementById('g1Result').textContent = `Missed target. Error = ${err.toFixed(2)} m.`; }
+        g1Update();
+      }
+      const margin = 42, xMax = Math.max(p.range, g1.target) * 1.2 + 1, yMax = Math.max(p.h, 4) * 1.4 + 1;
+      const sx = X => margin + (width - 2 * margin) * X / xMax;
+      const sy = Y => height - margin - (height - 2 * margin) * Y / yMax;
+      ctx.clearRect(0,0,width,height);
+      ctx.fillStyle = '#fff'; ctx.fillRect(0,0,width,height);
+      ctx.strokeStyle = '#d2deea'; ctx.lineWidth = 1;
+      for (let i=0;i<5;i++){ const yy = margin + (height - 2*margin)*i/4; ctx.beginPath(); ctx.moveTo(margin,yy); ctx.lineTo(width-margin,yy); ctx.stroke(); }
+      ctx.strokeStyle = '#6e7c89'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(margin,height-margin); ctx.lineTo(width-margin,height-margin); ctx.stroke();
+      const tx = sx(g1.target);
+      ctx.fillStyle = '#e07a12'; ctx.fillRect(tx-5,height-margin-28,10,28);
+      ctx.beginPath(); ctx.moveTo(tx+5,height-margin-28); ctx.lineTo(tx+32,height-margin-20); ctx.lineTo(tx+5,height-margin-12); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = '#0d6e6e'; ctx.lineWidth = 3; ctx.beginPath();
+      for (let i=0;i<=100;i++){ const tt = p.tof*i/100; const xx = p.vx*tt; const yy = p.vy*tt - 0.5*p.g*tt*tt; if(i===0) ctx.moveTo(sx(xx), sy(Math.max(yy,0))); else ctx.lineTo(sx(xx), sy(Math.max(yy,0))); }
+      ctx.stroke();
+      ctx.fillStyle = '#15588a'; ctx.beginPath(); ctx.arc(sx(x), sy(Math.max(y,0)), 10, 0, Math.PI*2); ctx.fill();
+    }
+    g1.speed.addEventListener('input', g1Update); g1.angle.addEventListener('input', g1Update);
+    document.getElementById('g1Launch').addEventListener('click', g1Launch);
+    document.getElementById('g1New').addEventListener('click', g1NewTarget);
+    g1Update(); g1NewTarget();
+
+    const g2 = {
+      c: document.getElementById('game2Canvas'), ctx: document.getElementById('game2Canvas').getContext('2d'),
+      torque: document.getElementById('g2Torque'), time: document.getElementById('g2Time'),
+      simTime: 0, running: false, angle: 0, target: 8 + Math.random() * 12
+    };
+    const g2I = 1.8;
+    function g2Update() {
+      const T = +g2.torque.value, dur = +g2.time.value, alpha = T / g2I, omega = alpha * dur, E = 0.5 * g2I * omega * omega;
+      document.getElementById('g2TorqueVal').textContent = `${T.toFixed(0)} N·m`;
+      document.getElementById('g2TimeVal').textContent = `${dur.toFixed(1)} s`;
+      document.getElementById('g2Alpha').textContent = `${alpha.toFixed(2)} rad/s²`;
+      document.getElementById('g2Final').textContent = `${omega.toFixed(2)} rad/s`;
+      document.getElementById('g2Target').textContent = `${g2.target.toFixed(2)} rad/s`;
+      document.getElementById('g2Energy').textContent = `${E.toFixed(2)} J`;
+    }
+    function g2Spin(){ g2.simTime = 0; g2.angle = 0; g2.running = true; document.getElementById('g2Result').textContent = ''; }
+    function g2New(){ g2.target = 5 + Math.random() * 16; g2Update(); document.getElementById('g2Result').textContent = 'New angular-speed target set.'; }
+    function g2Draw(dt){
+      const ctx = g2.ctx, {width,height}=g2.c, T=+g2.torque.value, dur=+g2.time.value, alpha=T/g2I;
+      if(g2.running){ g2.simTime += dt; if(g2.simTime > dur){ g2.running = false; const omega = alpha*dur; const err = Math.abs(omega - g2.target); document.getElementById('g2Result').textContent = err < 0.5 ? `Excellent match. Error = ${err.toFixed(2)} rad/s.` : err < 1.5 ? `Close match. Error = ${err.toFixed(2)} rad/s.` : `Needs adjustment. Error = ${err.toFixed(2)} rad/s.`; } }
+      const t = Math.min(g2.simTime, dur), omega = alpha * t; g2.angle += omega * dt; document.getElementById('g2Final').textContent = `${omega.toFixed(2)} rad/s`; document.getElementById('g2Energy').textContent = `${(0.5*g2I*omega*omega).toFixed(2)} J`;
+      ctx.clearRect(0,0,width,height); ctx.fillStyle='#fff'; ctx.fillRect(0,0,width,height);
+      const cx=220, cy=height/2+10, R=92;
+      ctx.fillStyle='#eaf2f9'; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.fill();
+      ctx.strokeStyle='#15588a'; ctx.lineWidth=4; ctx.stroke();
+      ctx.save(); ctx.translate(cx,cy); ctx.rotate(g2.angle); ctx.strokeStyle='#0d6e6e'; ctx.lineWidth=5;
+      for(let i=0;i<4;i++){ ctx.rotate(Math.PI/2); ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(R-10,0); ctx.stroke(); }
+      ctx.restore();
+      const gx=470, gy=90, gw=220, gh=16;
+      ctx.fillStyle='#e7edf5'; ctx.fillRect(gx,gy,gw,gh);
+      ctx.fillStyle='#0d6e6e'; ctx.fillRect(gx,gy,gw*clamp(omega/24,0,1),gh);
+      ctx.fillStyle='#e07a12'; ctx.fillRect(gx + gw*clamp(g2.target/24,0,1)-3, gy-8, 6, gh+16);
+      ctx.fillStyle='#617181'; ctx.font='13px Inter'; ctx.fillText('Current angular speed', gx, gy-12); ctx.fillText(`Target = ${g2.target.toFixed(2)} rad/s`, gx, gy+38);
+    }
+    g2.torque.addEventListener('input', g2Update); g2.time.addEventListener('input', g2Update); document.getElementById('g2Spin').addEventListener('click', g2Spin); document.getElementById('g2New').addEventListener('click', g2New); g2Update();
+
+    const g3 = {
+      c: document.getElementById('game3Canvas'), ctx: document.getElementById('game3Canvas').getContext('2d'),
+      h: document.getElementById('g3Height'), r: document.getElementById('g3Radius'),
+      progress: 0, running: false, score: 0
+    };
+    function g3Update() {
+      const h = +g3.h.value, r = +g3.r.value, m = 2, g = 9.81, v = Math.sqrt((4 * g * h) / 3), omega = v / r, pe = m * g * h;
+      document.getElementById('g3HeightVal').textContent = `${h.toFixed(1)} m`;
+      document.getElementById('g3RadiusVal').textContent = `${r.toFixed(2)} m`;
+      document.getElementById('g3PE').textContent = `${pe.toFixed(2)} J`;
+      document.getElementById('g3Speed').textContent = `${v.toFixed(2)} m/s`;
+      document.getElementById('g3Omega').textContent = `${omega.toFixed(2)} rad/s`;
+      document.getElementById('g3Score').textContent = g3.score;
+    }
+    function g3Roll(){ g3.progress = 0; g3.running = true; document.getElementById('g3Result').textContent = ''; }
+    function g3Reset(){ g3.progress = 0; g3.running = false; document.getElementById('g3Result').textContent = 'Reset complete.'; }
+    function g3Draw(dt){
+      const ctx = g3.ctx, {width,height} = g3.c, h = +g3.h.value, r = +g3.r.value, g = 9.81, v = Math.sqrt((4*g*h)/3);
+      if(g3.running){ g3.progress += dt * (0.16 + v/25); if(g3.progress >= 1){ g3.progress = 1; g3.running = false; const pts = Math.round(v*2); g3.score += pts; document.getElementById('g3Score').textContent = g3.score; document.getElementById('g3Result').textContent = `Finish speed = ${v.toFixed(2)} m/s. You earned ${pts} points.`; } }
+      ctx.clearRect(0,0,width,height); ctx.fillStyle='#fff'; ctx.fillRect(0,0,width,height);
+      const x1=80, y1=100, x2=620, y2=290; ctx.strokeStyle='#7b8793'; ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x2,y2); ctx.lineTo(width-60,y2); ctx.stroke();
+      const x = x1 + (x2-x1)*g3.progress, y = y1 + (y2-y1)*g3.progress; const R = 26 + r*18;
+      ctx.fillStyle='#dfeaf4'; ctx.beginPath(); ctx.arc(x,y-R, R, 0, Math.PI*2); ctx.fill(); ctx.strokeStyle='#15588a'; ctx.lineWidth=4; ctx.stroke();
+      ctx.save(); ctx.translate(x,y-R); ctx.rotate(g3.progress*10); ctx.strokeStyle='#0d6e6e'; ctx.lineWidth=4; for(let i=0;i<4;i++){ ctx.rotate(Math.PI/2); ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(R-5,0); ctx.stroke(); } ctx.restore();
+      ctx.fillStyle='#e07a12'; ctx.fillRect(width-78, y2-50, 10, 50); ctx.beginPath(); ctx.moveTo(width-68, y2-50); ctx.lineTo(width-30, y2-38); ctx.lineTo(width-68, y2-26); ctx.closePath(); ctx.fill();
+    }
+    g3.h.addEventListener('input', g3Update); g3.r.addEventListener('input', g3Update); document.getElementById('g3Roll').addEventListener('click', g3Roll); document.getElementById('g3Reset').addEventListener('click', g3Reset); g3Update();
+
+    const g4 = {
+      c: document.getElementById('game4Canvas'), ctx: document.getElementById('game4Canvas').getContext('2d'),
+      force: document.getElementById('g4Force'), duration: document.getElementById('g4Duration'),
+      target: 8 + Math.random()*20, score: 0, strikeLevel: 0
+    };
+    function g4Update(){
+      const F = +g4.force.value, dt = +g4.duration.value, impulse = F*dt, lever = 0.35, dL = impulse * lever;
+      document.getElementById('g4ForceVal').textContent = `${F.toFixed(0)} N`;
+      document.getElementById('g4DurationVal').textContent = `${dt.toFixed(2)} s`;
+      document.getElementById('g4Target').textContent = `${g4.target.toFixed(2)} N·m·s`;
+      document.getElementById('g4Actual').textContent = `${dL.toFixed(2)} N·m·s`;
+      document.getElementById('g4Impulse').textContent = `${impulse.toFixed(2)} N·s`;
+      document.getElementById('g4Score').textContent = g4.score;
+    }
+    function g4Strike(){
+      const F = +g4.force.value, dt = +g4.duration.value, dL = F*dt*0.35, err = Math.abs(dL-g4.target); g4.strikeLevel = 1;
+      if(err < 0.5){ g4.score += 10; document.getElementById('g4Result').textContent = `Excellent strike. Error = ${err.toFixed(2)} N·m·s.`; }
+      else if(err < 2){ g4.score += 6; document.getElementById('g4Result').textContent = `Good strike. Error = ${err.toFixed(2)} N·m·s.`; }
+      else { g4.score += 2; document.getElementById('g4Result').textContent = `Try again. Error = ${err.toFixed(2)} N·m·s.`; }
+      g4Update();
+    }
+    function g4New(){ g4.target = 6 + Math.random()*22; g4Update(); document.getElementById('g4Result').textContent = 'New target angular momentum change set.'; }
+    function g4Draw(dt){
+      const ctx = g4.ctx, {width,height} = g4.c, F = +g4.force.value, dur = +g4.duration.value, impulse = F*dur;
+      g4.strikeLevel = Math.max(0, g4.strikeLevel - dt*1.4);
+      ctx.clearRect(0,0,width,height); ctx.fillStyle='#fff'; ctx.fillRect(0,0,width,height);
+      const cx=230, cy=190, L=160;
+      ctx.strokeStyle='#15588a'; ctx.lineWidth=10; ctx.beginPath(); ctx.moveTo(cx-20,cy+70); ctx.lineTo(cx+20,cy+70); ctx.stroke();
+      ctx.lineWidth=8; ctx.beginPath(); ctx.moveTo(cx,cy+70); ctx.lineTo(cx+L*Math.cos(-0.3), cy+70-L*Math.sin(-0.3)); ctx.stroke();
+      const hx = cx+L*Math.cos(-0.3), hy = cy+70-L*Math.sin(-0.3);
+      ctx.strokeStyle = `rgba(224,122,18,${0.25 + 0.65*g4.strikeLevel})`; ctx.lineWidth = 12; ctx.beginPath(); ctx.moveTo(hx+20, hy-10); ctx.lineTo(hx+80, hy-10); ctx.stroke();
+      ctx.fillStyle='#e07a12'; ctx.beginPath(); ctx.moveTo(hx+84, hy-10); ctx.lineTo(hx+62, hy-24); ctx.lineTo(hx+62, hy+4); ctx.closePath(); ctx.fill();
+      const gx=480, gy=90, gw=220, gh=16, actual = impulse*0.35;
+      ctx.fillStyle='#e8eef5'; ctx.fillRect(gx,gy,gw,gh);
+      ctx.fillStyle='#0d6e6e'; ctx.fillRect(gx,gy,gw*clamp(actual/28,0,1),gh);
+      ctx.fillStyle='#e07a12'; ctx.fillRect(gx + gw*clamp(g4.target/28,0,1)-3, gy-8, 6, gh+16);
+      ctx.fillStyle='#617181'; ctx.font='13px Inter'; ctx.fillText('Angular momentum change', gx, gy-12);
+      ctx.fillText(`Target = ${g4.target.toFixed(2)} N·m·s`, gx, gy+38);
+      ctx.fillText(`Actual = ${actual.toFixed(2)} N·m·s`, gx, gy+58);
+    }
+    g4.force.addEventListener('input', g4Update); g4.duration.addEventListener('input', g4Update); document.getElementById('g4Strike').addEventListener('click', g4Strike); document.getElementById('g4New').addEventListener('click', g4New); g4Update();
+
+    setQuestion('g1CheckQ','g1Question','g1QResult');
+    setQuestion('g2CheckQ','g2Question','g2QResult');
+    setQuestion('g3CheckQ','g3Question','g3QResult');
+    setQuestion('g4CheckQ','g4Question','g4QResult');
+
+    let last = performance.now();
+    function animate(now){
+      const dt = Math.min((now-last)/1000, 0.033); last = now;
+      g1Draw(dt); g2Draw(dt); g3Draw(dt); g4Draw(dt);
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  </script>
 </body>
 </html>
